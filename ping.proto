@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package config.service;
+
+service ConfigService {
+    rpc Ping() returns (Response) {}
+}
+
+message Response {
+  string message = 1;
+}

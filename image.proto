@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+package model;
+
+message Image {
+  required string address = 1;
+  required string contentType = 2;
+}
+
+message ImageList {
+  repeated Image image = 1;
+}
