@@ -1,8 +1,10 @@
 from nameko.rpc import rpc
 from nameko.web.handlers import http
 from decouple import config
-from controller import SearchImages
+
+#Models and Controllers
 from models import SearchConfig
+from controller import SearchImagesController
 
 import json
 
@@ -25,7 +27,7 @@ class ImageService:
         #Config Search
         search_config = SearchConfig(query, self.MAX_IMAGES, self.SEARCH_URL, self.USER_AGENT)
 
-        image_list = SearchImages().get(search_config)
+        image_list = SearchImagesController().get(search_config)
         results = json.dumps([ob.as_json() for ob in image_list])
         return results
 

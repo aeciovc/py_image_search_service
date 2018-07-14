@@ -1,10 +1,16 @@
-from models import SearchConfig, Image
 from bs4 import BeautifulSoup
-from logger import info
+from logging import info
 
 import urllib.request
 import json
 import time
+
+#Models
+from models import SearchConfig, Image
+
+#Modules
+from modules.logger import logger
+new_relic_logger = logger.NewRelicLogger(None)
 
 class LXMLSearchImage(SearchConfig):
     

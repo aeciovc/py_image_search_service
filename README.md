@@ -11,4 +11,4 @@ source bin/activate
 deactivate
 
 #[Start Service]
-nameko run service --broker amqp://rabbitmq:rabbitmq@localhost
+make start

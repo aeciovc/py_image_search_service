@@ -1,6 +1,6 @@
 from search_factory import SearchFactory
 
-class SearchImages():
+class SearchImagesController():
     
     def get(self, search_config):
         

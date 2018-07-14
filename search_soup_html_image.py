@@ -1,10 +1,14 @@
-from models import SearchConfig, Image
 from bs4 import BeautifulSoup
-from logger import info
 
 import urllib.request
 import json
 import time
+
+#Modules
+from models import SearchConfig, Image
+
+#Modules
+from modules.logger import logger
 
 class HTMLSearchImage(SearchConfig):
     
@@ -12,11 +16,11 @@ class HTMLSearchImage(SearchConfig):
         self.config = config
 
     def search(self): 
-        info("[LXMLSearchImage] searching for " + self.config.query)
+        logger.info("[LXMLSearchImage] searching for " + self.config.query)
 
         start_time = time.time()
         url=self.config.get_search_url()
-        info("[LXMLSearchImage] Requesting... "+ url)
+        logger.info("[LXMLSearchImage] Requesting... "+ url)
         
         #Headers
         header={'User-Agent':self.config.user_agent}
@@ -33,9 +37,9 @@ class HTMLSearchImage(SearchConfig):
             image = Image(link, Type)
             image_list.append(image)
 
-        info("[LXMLSearchImage] there are total "+ str(len(image_list)) +" images")
+        logger.info("[LXMLSearchImage] there are total "+ str(len(image_list)) +" images")
         elapsed_time = time.time() - start_time
-        info("[LXMLSearchImage] Total time elapsed: " + str(elapsed_time))
+        logger.info("[LXMLSearchImage] Total time elapsed: " + str(elapsed_time))
         return image_list
 
 def get_soup(url,header):
