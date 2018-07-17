@@ -8,6 +8,9 @@ from controller import SearchImagesController
 
 import json
 
+#Intern Modules
+from logger import default
+
 class ImageService:
     name = config('SERVICE_NAME')
 
